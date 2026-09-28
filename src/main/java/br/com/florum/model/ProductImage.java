@@ -3,6 +3,7 @@ package br.com.florum.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.type.descriptor.jdbc.TinyIntJdbcType;
 
 @Entity
 @Table(name = "product_images")
@@ -21,7 +22,7 @@ public class ProductImage {
 
     @NotNull
     @Column(name = "sort_index")
-    private Integer sortIndex;
+    private TinyIntJdbcType sortIndex;
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
