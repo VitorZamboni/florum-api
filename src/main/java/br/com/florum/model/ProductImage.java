@@ -22,7 +22,7 @@ public class ProductImage {
 
     @NotNull
     @Column(name = "sort_index")
-    private TinyIntJdbcType sortIndex;
+    private Integer sortIndex;
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
