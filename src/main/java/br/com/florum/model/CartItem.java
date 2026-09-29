@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
-@Table(name = "order_item")
+@Table(name = "cart_items")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

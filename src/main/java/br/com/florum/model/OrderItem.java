@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
-@Table(name = "order_item")
+@Table(name = "order_items")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -27,7 +27,7 @@ public class OrderItem {
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "oder_id", referencedColumnName = "id")
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 
 }
