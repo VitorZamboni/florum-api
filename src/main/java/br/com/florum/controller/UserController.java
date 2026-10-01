@@ -6,6 +6,7 @@ import br.com.florum.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,6 +29,12 @@ public class UserController {
     public void createUser(@RequestBody @Valid UserDTO userDTO) {
         userService.save(userMapper.toEntity(userDTO));
         log.info("User created: {}", userDTO);
+    }
+
+    @GetMapping("{email}/exists")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Boolean> existsUser(@PathVariable String email) {
+        return ResponseEntity.accepted().body(userService.existsUser(email));
     }
 
 }

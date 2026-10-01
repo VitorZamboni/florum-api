@@ -32,7 +32,7 @@ public class User implements UserDetails {
 
     @NotNull
     @Email
-    @Column(length = 50, name = "email")
+    @Column(length = 50, name = "email", unique=true)
     private String email;
 
     @NotNull
