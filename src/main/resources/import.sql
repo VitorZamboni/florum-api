@@ -42,7 +42,8 @@ INSERT INTO public.products_categories (category_id, product_id) VALUES(3, 3);
 
 INSERT INTO public.addresses (cep,  "number", user_id, city, neighborhood, state, street, complement) VALUES('85513899',  '123', 2, 'Pato Branco', 'São Caetano', 'PR', 'Est Rio Dourado', 'Km 3');
 
-INSERT INTO public.coupons (discount_amount, expiration_date, code) VALUES(0.3, '2027-09-27 10:30:00', '1COMPRA');
+INSERT INTO public.coupons (discount_amount, expiration_date, code) VALUES(30, '2027-09-27 10:30:00', '1COMPRA');
+INSERT INTO public.coupons (discount_amount, expiration_date, code) VALUES(36, '2026-09-27 10:30:00', 'COMPRA');
 
 INSERT INTO public.orders (address_id, coupon_id, data_purchase, user_id, payment_type) VALUES(1, 1, '2027-09-28 12:30:00', 2, 'PIX');
 
