@@ -1,31 +1,22 @@
-package br.com.florum.model;
+package br.com.florum.dto;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-@Entity
-@Table(name = "addresses")
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@Getter
-@Setter
-public class Address {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+@Getter @Setter
+public class AddressDTO {
     private Long id;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private UserDTO user;
 
     @NotNull
-    @Column (length = 8)
-    @Pattern(regexp = "^[0-9]{8}$")
+    @Size(min = 8, max = 8)
     private String cep;
 
     @NotNull
