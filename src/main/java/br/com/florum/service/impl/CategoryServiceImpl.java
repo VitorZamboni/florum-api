@@ -1,9 +1,8 @@
-package br.com.florum.service;
+package br.com.florum.service.impl;
 
 import br.com.florum.model.Category;
 import br.com.florum.repository.CategoryRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import br.com.florum.service.ICategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

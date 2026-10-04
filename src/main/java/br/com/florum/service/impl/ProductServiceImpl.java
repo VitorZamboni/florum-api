@@ -1,7 +1,8 @@
-package br.com.florum.service;
+package br.com.florum.service.impl;
 
 import br.com.florum.model.Product;
 import br.com.florum.repository.ProductRepository;
+import br.com.florum.service.IProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ProductServiceImpl implements IProductService{
+public class ProductServiceImpl implements IProductService {
     private final ProductRepository productRepository;
 
     public ProductServiceImpl(ProductRepository productRepository) {
