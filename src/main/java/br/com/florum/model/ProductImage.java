@@ -1,5 +1,6 @@
 package br.com.florum.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -23,7 +24,7 @@ public class ProductImage {
     @Column(name = "sort_index")
     private Integer sortIndex;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 

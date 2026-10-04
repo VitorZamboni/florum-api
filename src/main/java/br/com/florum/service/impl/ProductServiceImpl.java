@@ -1,10 +1,13 @@
 package br.com.florum.service.impl;
 
+import br.com.florum.dto.ProductFilterDTO;
 import br.com.florum.model.Product;
 import br.com.florum.repository.ProductRepository;
+import br.com.florum.repository.spec.ProductSpec;
 import br.com.florum.service.IProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,27 +21,17 @@ public class ProductServiceImpl implements IProductService {
         this.productRepository = productRepository;
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<Product> findAll() {
-        return this.productRepository.findAll();
-    }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Product> findAll(Pageable pageable) {
-        return this.productRepository.findAll(pageable);
+    public Page<Product> findAll(Pageable pageable, ProductFilterDTO filter) {
+        Specification<Product> spec = ProductSpec.filterBy(filter);
+        return productRepository.findAll(spec, pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Product findById(Long id) {
         return this.productRepository.findById(id).orElse(null);
-    }
-
-
-    @Override
-    public long count() {
-        return this.productRepository.count();
     }
 }
