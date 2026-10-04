@@ -38,10 +38,10 @@ public class Order {
     @Column(name = "payment_type")
     private PaymentTypeEnum paymentTypeEnum;
 
-    @NotNull
     @Column(name = "data_purchase")
-    private Date datePurchase;
+    private Date datePurchase = new Date();
 
+    @NotNull
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;
 }

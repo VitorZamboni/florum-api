@@ -22,10 +22,12 @@ public class OrderItem {
     @NotNull
     private Double price;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
