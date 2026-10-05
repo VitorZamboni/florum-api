@@ -3,6 +3,7 @@ package br.com.florum.controller;
 import br.com.florum.dto.ProductDTO;
 import br.com.florum.dto.ProductFilterDTO;
 import br.com.florum.dto.SimpleProductDTO;
+import br.com.florum.enuns.ProductSortEnum;
 import br.com.florum.mapper.ProductMapper;
 import br.com.florum.model.Product;
 import br.com.florum.service.IProductService;
@@ -39,7 +40,8 @@ public class ProductController {
        @RequestParam int size,
        ProductFilterDTO filter
     ) {
-        PageRequest pageRequest = PageRequest.of(page, size);
+        ProductSortEnum sortOption = filter.getSort() != null ? filter.getSort() : ProductSortEnum.RECENTS;
+        PageRequest pageRequest = PageRequest.of(page, size, sortOption.getSort());
 
         return ResponseEntity.status(HttpStatus.OK).body(
                 productService.findAll(pageRequest, filter).map(productMapper::toSimpleDto));

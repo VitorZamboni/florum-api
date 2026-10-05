@@ -1,5 +1,6 @@
 package br.com.florum.dto;
 
+import br.com.florum.enuns.ProductSortEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,4 +16,5 @@ public class ProductFilterDTO {
     private String text;
     private Boolean promotion;
     private List<Long> categoryIds;
+    private ProductSortEnum sort;
 }
