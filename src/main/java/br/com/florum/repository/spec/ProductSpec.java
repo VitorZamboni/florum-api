@@ -1,6 +1,6 @@
 package br.com.florum.repository.spec;
 
-import br.com.florum.dto.ProductFilterDTO;
+import br.com.florum.dto.product.ProductFilterDTO;
 import br.com.florum.model.Product;
 import br.com.florum.model.ProductCategory;
 import jakarta.persistence.criteria.Join;

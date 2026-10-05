@@ -1,7 +1,7 @@
 package br.com.florum.mapper;
 
 
-import br.com.florum.dto.CouponDto;
+import br.com.florum.dto.coupon.CouponDto;
 import br.com.florum.model.Coupon;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

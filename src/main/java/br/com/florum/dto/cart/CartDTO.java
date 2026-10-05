@@ -1,6 +1,6 @@
-package br.com.florum.dto;
+package br.com.florum.dto.cart;
 
-import jakarta.persistence.*;
+import br.com.florum.dto.user.UserDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 

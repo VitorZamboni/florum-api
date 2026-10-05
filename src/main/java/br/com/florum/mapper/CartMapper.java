@@ -1,6 +1,6 @@
 package br.com.florum.mapper;
 
-import br.com.florum.dto.CartDTO;
+import br.com.florum.dto.cart.CartDTO;
 import br.com.florum.model.Cart;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

@@ -1,6 +1,6 @@
 package br.com.florum.security;
 
-import br.com.florum.dto.AuthRequestDTO;
+import br.com.florum.dto.user.AuthRequestDTO;
 import br.com.florum.model.User;
 import br.com.florum.security.dto.AuthenticationResponse;
 import br.com.florum.security.dto.UserResponseDTO;

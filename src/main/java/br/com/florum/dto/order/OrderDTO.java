@@ -1,7 +1,9 @@
-package br.com.florum.dto;
+package br.com.florum.dto.order;
 
+import br.com.florum.dto.address.AddressDTO;
+import br.com.florum.dto.coupon.CouponDto;
+import br.com.florum.dto.user.UserDTO;
 import br.com.florum.enuns.PaymentTypeEnum;
-import br.com.florum.model.Coupon;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 

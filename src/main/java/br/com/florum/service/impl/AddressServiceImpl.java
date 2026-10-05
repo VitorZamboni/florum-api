@@ -1,6 +1,6 @@
 package br.com.florum.service.impl;
 
-import br.com.florum.dto.AddressCepDTO;
+import br.com.florum.dto.address.AddressCepDTO;
 import br.com.florum.model.Address;
 import br.com.florum.repository.AddressRepository;
 import br.com.florum.service.IAddressService;

@@ -1,6 +1,6 @@
 package br.com.florum.service.impl;
 
-import br.com.florum.dto.ProductFilterDTO;
+import br.com.florum.dto.product.ProductFilterDTO;
 import br.com.florum.model.Product;
 import br.com.florum.repository.ProductRepository;
 import br.com.florum.repository.spec.ProductSpec;
@@ -10,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class ProductServiceImpl implements IProductService {

@@ -1,6 +1,6 @@
 package br.com.florum.mapper;
 
-import br.com.florum.dto.CategoryDTO;
+import br.com.florum.dto.categories.CategoryDTO;
 import br.com.florum.model.Category;
 import br.com.florum.model.ProductCategory;
 import org.mapstruct.Mapper;

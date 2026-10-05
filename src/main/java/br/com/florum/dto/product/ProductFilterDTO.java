@@ -1,4 +1,4 @@
-package br.com.florum.dto;
+package br.com.florum.dto.product;
 
 import br.com.florum.enuns.ProductSortEnum;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
 package br.com.florum.controller;
 
-import br.com.florum.dto.ProductDTO;
-import br.com.florum.dto.ProductFilterDTO;
-import br.com.florum.dto.SimpleProductDTO;
+import br.com.florum.dto.product.ProductDTO;
+import br.com.florum.dto.product.ProductFilterDTO;
+import br.com.florum.dto.product.SimpleProductDTO;
 import br.com.florum.enuns.ProductSortEnum;
 import br.com.florum.mapper.ProductMapper;
 import br.com.florum.model.Product;

@@ -1,6 +1,7 @@
 package br.com.florum.controller;
 
-import br.com.florum.dto.UserDTO;
+import br.com.florum.dto.user.ExistsUserDTO;
+import br.com.florum.dto.user.UserDTO;
 import br.com.florum.mapper.UserMapper;
 import br.com.florum.service.UserService;
 import jakarta.validation.Valid;
@@ -31,10 +32,10 @@ public class UserController {
         log.info("User created: {}", userDTO);
     }
 
-    @GetMapping("{email}/exists")
+    @GetMapping("exists")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Boolean> existsUser(@PathVariable String email) {
-        return ResponseEntity.accepted().body(userService.existsUser(email));
+    public ResponseEntity<ExistsUserDTO> existsUser(@RequestParam String email) {
+        return ResponseEntity.ok(new ExistsUserDTO(userService.existsUser(email)));
     }
 
 }

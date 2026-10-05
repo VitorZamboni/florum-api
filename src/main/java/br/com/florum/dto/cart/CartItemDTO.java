@@ -1,4 +1,4 @@
-package br.com.florum.dto;
+package br.com.florum.dto.cart;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.*;

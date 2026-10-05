@@ -1,7 +1,7 @@
 package br.com.florum.controller;
 
-import br.com.florum.dto.CartDTO;
-import br.com.florum.dto.CartItemDTO;
+import br.com.florum.dto.cart.CartDTO;
+import br.com.florum.dto.cart.CartItemDTO;
 import br.com.florum.mapper.CartItemMapper;
 import br.com.florum.mapper.CartMapper;
 import br.com.florum.model.Cart;

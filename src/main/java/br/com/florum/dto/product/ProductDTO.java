@@ -1,5 +1,6 @@
-package br.com.florum.dto;
+package br.com.florum.dto.product;
 
+import br.com.florum.dto.categories.CategoryDTO;
 import lombok.*;
 
 import java.math.BigDecimal;

@@ -1,6 +1,6 @@
 package br.com.florum.controller;
 
-import br.com.florum.dto.CategoryDTO;
+import br.com.florum.dto.categories.CategoryDTO;
 import br.com.florum.mapper.CategoryMapper;
 import br.com.florum.service.ICategoryService;
 import org.springframework.http.ResponseEntity;

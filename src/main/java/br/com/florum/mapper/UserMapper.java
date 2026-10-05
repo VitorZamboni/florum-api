@@ -1,6 +1,6 @@
 package br.com.florum.mapper;
 
-import br.com.florum.dto.UserDTO;
+import br.com.florum.dto.user.UserDTO;
 import br.com.florum.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
