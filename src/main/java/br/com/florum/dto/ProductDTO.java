@@ -1,10 +1,5 @@
 package br.com.florum.dto;
 
-import br.com.florum.model.ProductCategory;
-import br.com.florum.model.ProductImage;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -35,7 +30,7 @@ public class ProductDTO {
 
     private Date createdOn;
 
-    private List<CategoryDTO> productCategories;
+    private List<CategoryDTO> categories;
 
-    private List<ProductImage> images;
+    private List<ProductImageDTO> images;
 }

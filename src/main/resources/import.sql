@@ -24,10 +24,10 @@ INSERT INTO product_images (sort_index,  product_id, url) VALUES(3, 2, 'https://
 INSERT INTO product_images (sort_index,  product_id, url) VALUES(4, 2, 'https://cdn.pixabay.com/photo/2015/01/10/14/29/orchids-595237_1280.jpg');
 
 -- Imagens do arranjo de flores do campo
-INSERT INTO product_images (sort_index,  product_id, url) VALUES(1, 2, 'https://images.pexels.com/photos/14299951/pexels-photo-14299951.jpeg');
-INSERT INTO product_images (sort_index,  product_id, url) VALUES(2, 2, 'https://images.pexels.com/photos/34580551/pexels-photo-34580551.jpeg');
-INSERT INTO product_images (sort_index,  product_id, url) VALUES(3, 2, 'https://images.pexels.com/photos/6295319/pexels-photo-6295319.jpeg');
-INSERT INTO product_images (sort_index,  product_id, url) VALUES(4, 2, 'https://images.pexels.com/photos/12774934/pexels-photo-12774934.jpeg');
+INSERT INTO product_images (sort_index,  product_id, url) VALUES(1, 3, 'https://images.pexels.com/photos/14299951/pexels-photo-14299951.jpeg');
+INSERT INTO product_images (sort_index,  product_id, url) VALUES(2, 3, 'https://images.pexels.com/photos/34580551/pexels-photo-34580551.jpeg');
+INSERT INTO product_images (sort_index,  product_id, url) VALUES(3, 3, 'https://images.pexels.com/photos/6295319/pexels-photo-6295319.jpeg');
+INSERT INTO product_images (sort_index,  product_id, url) VALUES(4, 3, 'https://images.pexels.com/photos/12774934/pexels-photo-12774934.jpeg');
 
 -- Rosas
 INSERT INTO public.products_categories (category_id, product_id) VALUES(2, 1);
@@ -40,7 +40,7 @@ INSERT INTO public.products_categories (category_id, product_id) VALUES(4, 2);
 -- Flores do Campo
 INSERT INTO public.products_categories (category_id, product_id) VALUES(3, 3);
 
-INSERT INTO public.addresses (cep,  "number", user_id, city, neighborhood, state, street, complement) VALUES('85513899',  '123', 2, 'Pato Branco', 'São Caetano', 'PR', 'Est Rio Dourado', 'Km 3');
+INSERT INTO public.addresses (cep,  "number", user_id, city, district, state, street, complement, country) VALUES('85513899',  '123', 2, 'Pato Branco', 'São Caetano', 'PR', 'Est Rio Dourado', 'Km 3', 'Brasil');
 
 INSERT INTO public.coupons (discount_amount, expiration_date, code) VALUES(30, '2027-09-27 10:30:00', '1COMPRA');
 INSERT INTO public.coupons (discount_amount, expiration_date, code) VALUES(36, '2026-09-27 10:30:00', 'COMPRA');

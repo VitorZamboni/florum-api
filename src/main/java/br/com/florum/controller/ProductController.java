@@ -24,10 +24,10 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Product> findById(@PathVariable Long id) {
+    public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
         Product Product = productService.findById(id);
         if (Product != null) {
-            return ResponseEntity.status(HttpStatus.OK).body(Product);
+            return ResponseEntity.status(HttpStatus.OK).body(productMapper.toDto(Product));
         } else {
             return ResponseEntity.noContent().build();
         }
