@@ -1,5 +1,6 @@
-package br.com.florum.dto;
+package br.com.florum.dto.order;
 
+import br.com.florum.dto.product.ProductDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 

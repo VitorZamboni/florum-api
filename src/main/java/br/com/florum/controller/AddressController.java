@@ -1,7 +1,7 @@
 package br.com.florum.controller;
 
-import br.com.florum.dto.AddressCepDTO;
-import br.com.florum.dto.AddressDTO;
+import br.com.florum.dto.address.AddressCepDTO;
+import br.com.florum.dto.address.AddressDTO;
 import br.com.florum.mapper.AddressMapper;
 import br.com.florum.model.Address;
 import br.com.florum.service.IAddressService;

@@ -1,6 +1,6 @@
-package br.com.florum.dto;
+package br.com.florum.dto.cart;
 
-import jakarta.persistence.*;
+import br.com.florum.dto.user.UserDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -13,10 +13,5 @@ import java.util.List;
 @Getter
 @Setter
 public class CartDTO {
-    private Long id;
-
-    @NotNull
-    private UserDTO user;
-
     private List<CartItemDTO> cartItems;
 }

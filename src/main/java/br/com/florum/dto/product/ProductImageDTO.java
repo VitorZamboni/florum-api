@@ -1,4 +1,4 @@
-package br.com.florum.dto;
+package br.com.florum.dto.product;
 
 import lombok.*;
 

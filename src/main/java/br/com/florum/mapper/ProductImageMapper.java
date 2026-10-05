@@ -1,6 +1,6 @@
 package br.com.florum.mapper;
 
-import br.com.florum.dto.ProductImageDTO;
+import br.com.florum.dto.product.ProductImageDTO;
 import br.com.florum.model.ProductImage;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

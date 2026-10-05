@@ -1,5 +1,6 @@
-package br.com.florum.dto;
+package br.com.florum.dto.cart;
 
+import br.com.florum.dto.product.SimpleProductDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import lombok.*;
 public class CartItemDTO {
     private Long id;
 
-    @NotNull
     private Integer quantity;
 
+    private SimpleProductDTO product;
 }

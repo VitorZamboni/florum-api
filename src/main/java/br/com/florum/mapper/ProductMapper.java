@@ -1,23 +1,21 @@
 package br.com.florum.mapper;
 
-import br.com.florum.dto.ProductDTO;
-import br.com.florum.dto.SimpleProductDTO;
+import br.com.florum.dto.product.ProductDTO;
+import br.com.florum.dto.product.SimpleProductDTO;
 import br.com.florum.model.Product;
-import br.com.florum.model.ProductCategory;
 import br.com.florum.model.ProductImage;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.Named;
 
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = {CategoryMapper.class, ProductImageMapper.class})
 public interface ProductMapper {
+    @Mapping(target = "categories", source = "productCategories")
     ProductDTO toDto(Product entity);
 
     @Mapping(target = "mainImageUrl", source = "images", qualifiedByName = "mapMainImage")

@@ -1,6 +1,6 @@
 package br.com.florum.controller;
 
-import br.com.florum.dto.OrderDTO;
+import br.com.florum.dto.order.OrderDTO;
 import br.com.florum.mapper.OrderMapper;
 import br.com.florum.model.Order;
 import br.com.florum.service.IOrderService;

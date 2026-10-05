@@ -1,6 +1,6 @@
 package br.com.florum.controller;
 
-import br.com.florum.dto.CouponDto;
+import br.com.florum.dto.coupon.CouponDto;
 import br.com.florum.mapper.CouponMapper;
 import br.com.florum.service.ICouponService;
 import org.springframework.http.HttpStatus;

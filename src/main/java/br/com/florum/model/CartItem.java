@@ -5,7 +5,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
-@Table(name = "cart_items")
+@Table(
+    name = "cart_items",
+    uniqueConstraints = @UniqueConstraint(
+        name = "uk_cart_items_cart_product",
+        columnNames = {"cart_id", "product_id"}
+    )
+)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

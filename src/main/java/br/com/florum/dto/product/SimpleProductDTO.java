@@ -1,9 +1,8 @@
-package br.com.florum.dto;
+package br.com.florum.dto.product;
 
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Getter
 @Setter

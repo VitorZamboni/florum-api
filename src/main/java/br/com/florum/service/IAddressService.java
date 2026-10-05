@@ -1,8 +1,7 @@
 package br.com.florum.service;
 
-import br.com.florum.dto.AddressCepDTO;
+import br.com.florum.dto.address.AddressCepDTO;
 import br.com.florum.model.Address;
-import br.com.florum.model.Category;
 
 import java.util.List;
 

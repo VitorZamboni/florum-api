@@ -1,6 +1,6 @@
 package br.com.florum.mapper;
 
-import br.com.florum.dto.OrderDTO;
+import br.com.florum.dto.order.OrderDTO;
 import br.com.florum.model.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
