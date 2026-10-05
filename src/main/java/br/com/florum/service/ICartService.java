@@ -7,5 +7,4 @@ import br.com.florum.model.User;
 public interface ICartService {
     Cart findByUser(Long id);
     Cart save(CreateCartDTO cart, User user);
-    void delete(Long id);
 }

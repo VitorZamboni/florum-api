@@ -1,14 +1,9 @@
 package br.com.florum.service;
 
-import br.com.florum.dto.cart.CartItemDTO;
-import br.com.florum.model.CartItem;
-
-import java.util.List;
+import br.com.florum.dto.cart.UpdateCartItemDTO;
 
 public interface ICartItemService {
-    CartItem findById(Long id);
-//    CartItem save(CartItem cartItem);
-    CartItem save(List<CartItemDTO> items);
-    void deleteById(Long id);
+    void updateCartItem(Long id, UpdateCartItemDTO cartItem, Long userId);
+    void deleteById(Long id, Long userId);
     Integer countsByUserId(Long cartId);
 }

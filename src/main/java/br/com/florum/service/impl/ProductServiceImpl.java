@@ -19,7 +19,6 @@ public class ProductServiceImpl implements IProductService {
         this.productRepository = productRepository;
     }
 
-
     @Override
     @Transactional(readOnly = true)
     public Page<Product> findAll(Pageable pageable, ProductFilterDTO filter) {
