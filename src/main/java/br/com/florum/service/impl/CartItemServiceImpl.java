@@ -1,10 +1,13 @@
 package br.com.florum.service.impl;
 
+import br.com.florum.dto.cart.CartItemDTO;
 import br.com.florum.model.CartItem;
 import br.com.florum.repository.CartItemRepository;
 import br.com.florum.service.ICartItemService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class CartItemServiceImpl implements ICartItemService {
@@ -21,9 +24,14 @@ public class CartItemServiceImpl implements ICartItemService {
     }
 
     @Override
-    public CartItem save(CartItem cartItem) {
-        return this.cartItemRepository.save(cartItem);
+    public CartItem save(List<CartItemDTO> items) {
+        return null;
     }
+
+//    @Override
+//    public CartItem save(CartItem cartItem) {
+//        return this.cartItemRepository.save(cartItem);
+//    }
 
     @Override
     public void deleteById(Long id) {
@@ -31,8 +39,8 @@ public class CartItemServiceImpl implements ICartItemService {
     }
 
     @Override
-    public Integer countsByCartId(Long cartId) {
-        return cartItemRepository.countCartItemsByCartId(cartId);
+    public Integer countsByUserId(Long cartId) {
+        return cartItemRepository.countCartItemsByCartUserId(cartId);
     }
 
 }

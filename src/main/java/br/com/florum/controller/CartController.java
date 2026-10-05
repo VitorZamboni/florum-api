@@ -1,16 +1,17 @@
 package br.com.florum.controller;
 
-import br.com.florum.dto.cart.CartDTO;
-import br.com.florum.dto.cart.CartItemDTO;
+import br.com.florum.dto.cart.*;
+import br.com.florum.dto.user.UserDTO;
 import br.com.florum.mapper.CartItemMapper;
 import br.com.florum.mapper.CartMapper;
-import br.com.florum.model.Cart;
 import br.com.florum.model.CartItem;
+import br.com.florum.model.User;
 import br.com.florum.service.ICartItemService;
 import br.com.florum.service.ICartService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,17 +32,17 @@ public class CartController {
         this.cartItemMapper = cartItemMapper;
     }
 
-    @GetMapping("{userId}")
-    public ResponseEntity<CartDTO> findByUserId(@PathVariable Long userId){
-        Cart cart = this.cartService.findByUser(userId);
-
-        List<CartItemDTO> itensDto = cart.getCartItems().stream().map(cartItemMapper::toDto).toList();
-
-        CartDTO dto = cartMapper.toDTO(cart);
-        dto.setCartItems(itensDto);
-
-        return ResponseEntity.status(HttpStatus.OK).body(dto);
-    }
+//    @GetMapping("{userId}")
+//    public ResponseEntity<CartDTO> findByUserId(@PathVariable Long userId){
+//        Cart cart = this.cartService.findByUser(userId);
+//
+//        List<CartItemDTO> itensDto = cart.getCartItems().stream().map(cartItemMapper::toDto).toList();
+//
+//        CartDTO dto = cartMapper.toDTO(cart);
+//        dto.setCartItems(itensDto);
+//
+//        return ResponseEntity.status(HttpStatus.OK).body(dto);
+//    }
 
 
     @DeleteMapping("/cartItem/{id}")
@@ -55,17 +56,33 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.OK).body(this.cartItemMapper.toDto(this.cartItemService.findById(id)));
     }
 
+//    @PostMapping
+//    public ResponseEntity<CartItemDTO> save(@RequestBody @Valid CartItemDTO cartItem){
+//        CartItem cartItemSaved = cartItemService.save(cartItemMapper.toEntity(cartItem));
+//
+//        return ResponseEntity.status(HttpStatus.CREATED).body(cartItemMapper.toDto(cartItemSaved));
+//    }
+
     @PostMapping
-    public ResponseEntity<CartItemDTO> save(@RequestBody @Valid CartItemDTO cartItem){
-        CartItem cartItemSaved = cartItemService.save(cartItemMapper.toEntity(cartItem));
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(cartItemMapper.toDto(cartItemSaved));
+    @ResponseStatus(HttpStatus.CREATED)
+    public void save(@RequestBody @Valid CreateCartDTO cart, @AuthenticationPrincipal User user) {
+        cartService.save(cart, user);
     }
 
-    @GetMapping("count/{cartId}")
-    public ResponseEntity<Integer> count(@PathVariable Long cartId) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.cartItemService.countsByCartId(cartId));
+    @GetMapping("count")
+    public ResponseEntity<CartCountDTO> count(@AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(
+            new CartCountDTO(this.cartItemService.countsByUserId(user.getId()))
+        );
     }
+
+    @GetMapping
+    public ResponseEntity<CartDTO> getCart(@AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(
+            cartMapper.toDTO(this.cartService.findByUser(user.getId()))
+        );
+    }
+
 }
 
 

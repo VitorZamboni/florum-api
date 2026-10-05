@@ -5,7 +5,7 @@ insert into categories (name) values ('Orquideas');
 insert into categories (name) values ('Rosas');
 
 INSERT INTO users(name, email, password) VALUES ('Administrador', 'admin@admin.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
-INSERT INTO users(name, email, password) VALUES ('Teste', 'test@gmail.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
+INSERT INTO users(name, email, password) VALUES ('Teste', 'test@gmail.com','$2a$10$5Em3OojvftsFJcpaX7QIWuyhZseZHDRz.jWpQ8LCTHzekypJE1Bgm');
 
 INSERT INTO products (discount, evaluation, price, stock, "views", created_on, description, "name") VALUES(0, 4.5, 199.99, 10, 1432, '2026-09-27 10:30:00', 'Um lindo buque de rosas', 'Buque de Rosas');
 INSERT INTO products (discount, evaluation, price, stock, "views", created_on, description, "name") VALUES(0.1, 4.9, 165.99, 58, 5671, '2026-09-26 11:30:00', 'Um Belo vaso de orquideas', 'Vaso de Orquideas');

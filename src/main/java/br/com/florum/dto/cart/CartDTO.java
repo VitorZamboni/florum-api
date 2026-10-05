@@ -13,10 +13,5 @@ import java.util.List;
 @Getter
 @Setter
 public class CartDTO {
-    private Long id;
-
-    @NotNull
-    private UserDTO user;
-
     private List<CartItemDTO> cartItems;
 }

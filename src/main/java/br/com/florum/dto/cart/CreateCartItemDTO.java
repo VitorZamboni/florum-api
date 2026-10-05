@@ -1,7 +1,7 @@
 package br.com.florum.dto.cart;
 
-import br.com.florum.dto.product.SimpleProductDTO;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 @AllArgsConstructor
@@ -9,10 +9,11 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class CartItemDTO {
-    private Long id;
+public class CreateCartItemDTO {
+    @NotNull
+    private Long productId;
 
+    @NotNull
+    @Positive
     private Integer quantity;
-
-    private SimpleProductDTO product;
 }
