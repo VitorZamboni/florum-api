@@ -2,6 +2,7 @@ package br.com.florum.service.impl;
 
 import br.com.florum.dto.order.CreateOrderDTO;
 import br.com.florum.dto.product.ProductQuantityDTO;
+import br.com.florum.enuns.OrderStatusEnum;
 import br.com.florum.model.*;
 import br.com.florum.repository.AddressRepository;
 import br.com.florum.repository.OrderRepository;
@@ -79,6 +80,7 @@ public class OrderServiceImpl implements IOrderService {
             .address(address)
             .shipping(addressService.calculateShipping(address))
             .paymentTypeEnum(orderDTO.getPaymentType())
+            .status(OrderStatusEnum.PENDING)
             .coupon(coupon)
             .build();
 

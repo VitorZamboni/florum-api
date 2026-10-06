@@ -1,5 +1,6 @@
 package br.com.florum.model;
 
+import br.com.florum.enuns.OrderStatusEnum;
 import br.com.florum.enuns.PaymentTypeEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -39,6 +40,10 @@ public class Order {
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_type")
     private PaymentTypeEnum paymentTypeEnum;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private OrderStatusEnum status;
 
     @Column(name = "purchased_on")
     @Builder.Default
