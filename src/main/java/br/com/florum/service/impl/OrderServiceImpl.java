@@ -106,7 +106,9 @@ public class OrderServiceImpl implements IOrderService {
             );
         }
         order.getOrderItems().addAll(items);
-        order.setDiscount(coupon != null ? coupon.getDiscountAmount() : BigDecimal.ZERO);
+        BigDecimal discount = coupon != null ? coupon.getDiscountAmount() : BigDecimal.ZERO;
+        order.setDiscount(discount);
+        order.setTotal(subtotal.add(order.getShipping()).subtract(discount));
         orderRepository.save(order);
 
         quantityByProduct.forEach((key, value) -> {

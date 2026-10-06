@@ -50,6 +50,9 @@ public class Order {
     private BigDecimal discount;
 
     @NotNull
+    private BigDecimal total;
+
+    @NotNull
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<OrderItem> orderItems = new ArrayList<>();
