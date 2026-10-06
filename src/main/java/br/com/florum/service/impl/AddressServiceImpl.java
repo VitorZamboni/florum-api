@@ -2,6 +2,7 @@ package br.com.florum.service.impl;
 
 import br.com.florum.dto.address.AddressCepDTO;
 import br.com.florum.model.Address;
+import br.com.florum.model.User;
 import br.com.florum.repository.AddressRepository;
 import br.com.florum.service.IAddressService;
 import org.springframework.http.HttpStatus;
@@ -53,7 +54,13 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public Address save(Address address) {
+    public Address save(Address address, User user) {
+        address.setUser(user);
+
+        if(address.getCountry() == null){
+            address.setCountry("Brasil");
+        }
+
         return this.addressRepository.save(address);
     }
 

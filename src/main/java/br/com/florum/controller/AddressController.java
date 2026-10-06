@@ -4,10 +4,12 @@ import br.com.florum.dto.address.AddressCepDTO;
 import br.com.florum.dto.address.AddressDTO;
 import br.com.florum.mapper.AddressMapper;
 import br.com.florum.model.Address;
+import br.com.florum.model.User;
 import br.com.florum.service.IAddressService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +26,10 @@ public class AddressController {
         this.addressMapper = addressMapper;
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user")
     @Transactional(readOnly = true)
-    public ResponseEntity<List<AddressDTO>> findByUser(@PathVariable Long userId){
-        return ResponseEntity.status(HttpStatus.OK).body(addressService.findByUser(userId).stream().map(addressMapper::toDto).toList());
+    public ResponseEntity<List<AddressDTO>> findByUser(@AuthenticationPrincipal User user){
+        return ResponseEntity.status(HttpStatus.OK).body(addressService.findByUser(user.getId()).stream().map(addressMapper::toDto).toList());
     }
 
     @GetMapping("{id}")
@@ -43,10 +45,10 @@ public class AddressController {
     }
 
     @PostMapping
-    public ResponseEntity<AddressDTO> save(@RequestBody @Valid AddressDTO address){
-        Address addressSaved = addressService.save(addressMapper.toEntity(address));
+    public ResponseEntity<AddressDTO> save(@RequestBody @Valid AddressDTO address, @AuthenticationPrincipal User user){
+        Address addressSaved = addressService.save(addressMapper.toEntity(address), user);
 
-        return ResponseEntity.status(HttpStatus.OK).body(addressMapper.toDto(addressSaved));
+        return ResponseEntity.status(HttpStatus.CREATED).body(addressMapper.toDto(addressSaved));
     }
 
     @DeleteMapping("{id}")

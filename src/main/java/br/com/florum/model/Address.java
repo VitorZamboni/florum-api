@@ -50,8 +50,7 @@ public class Address {
     private String state;
 
     @NotNull
-    @Size(min = 3, max = 70)
-    private String country;
+    private String country = "Brasil";
 
     private String complement;
 }

@@ -1,6 +1,5 @@
 package br.com.florum.dto.address;
 
-import br.com.florum.dto.user.UserDTO;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -12,9 +11,6 @@ import lombok.*;
 @Getter @Setter
 public class AddressDTO {
     private Long id;
-
-    @NotNull
-    private UserDTO user;
 
     @NotNull
     @Size(min = 8, max = 8)
