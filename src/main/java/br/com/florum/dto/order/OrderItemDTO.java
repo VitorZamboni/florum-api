@@ -1,25 +1,20 @@
 package br.com.florum.dto.order;
 
-import br.com.florum.dto.product.ProductDTO;
-import jakarta.validation.constraints.NotNull;
+import br.com.florum.dto.product.SimpleProductDTO;
 import lombok.*;
 
 import java.math.BigDecimal;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter
-@Setter
 public class OrderItemDTO {
     private Long id;
 
-    @NotNull
     private Integer quantity;
 
-    @NotNull
     private BigDecimal price;
 
-    @NotNull
-    private ProductDTO product;
+    private SimpleProductDTO product;
 }

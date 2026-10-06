@@ -123,18 +123,14 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Order> findAll(Long userId) {
         return this.orderRepository.findByUserId(userId);
     }
 
     @Override
-    public Order findById(Long id) {
-        Order order = this.orderRepository.findOrderById(id);
-
-        if(order == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found!");
-        }
-
-        return order;
+    @Transactional(readOnly = true)
+    public Order findById(Long id, Long userId) {
+        return this.orderRepository.findOrderByIdAndUserId(id, userId);
     }
 }

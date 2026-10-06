@@ -14,9 +14,6 @@ public class AddressDTO {
     private Long id;
 
     @NotNull
-    private UserDTO user;
-
-    @NotNull
     @Size(min = 8, max = 8)
     private String cep;
 

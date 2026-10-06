@@ -3,6 +3,7 @@ package br.com.florum.controller;
 import br.com.florum.dto.order.CreateOrderDTO;
 import br.com.florum.dto.order.CreateOrderResponseDTO;
 import br.com.florum.dto.order.OrderDTO;
+import br.com.florum.dto.order.SimpleOrderDTO;
 import br.com.florum.mapper.OrderMapper;
 import br.com.florum.model.Order;
 import br.com.florum.model.User;
@@ -37,20 +38,20 @@ public class OrderController {
         return new CreateOrderResponseDTO(orderService.save(order, user));
     }
 
-    @GetMapping("user/{userId}")
-    public ResponseEntity<List<OrderDTO>> findAllByUser(@PathVariable Long userId){
-        return ResponseEntity.status(HttpStatus.OK).body(orderService.findAll(userId).stream().map(orderMapper::toDto).toList());
+    @GetMapping()
+    public ResponseEntity<List<SimpleOrderDTO>> findAllByUser(@AuthenticationPrincipal User user){
+        return ResponseEntity.ok()
+            .body(orderService.findAll(user.getId()).stream().map(orderMapper::toSimpleDto).toList());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Order> findById(@PathVariable Long id){
-        Order order = this.orderService.findById(id);
+    public ResponseEntity<OrderDTO> findById(@PathVariable Long id, @AuthenticationPrincipal User user){
+        Order order = this.orderService.findById(id, user.getId());
 
-        if(order == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found!");
+        if (order == null){
+            return ResponseEntity.noContent().build();
         }
-
-        return ResponseEntity.status(HttpStatus.OK).body(order);
+        return ResponseEntity.status(HttpStatus.OK).body(orderMapper.toDto(order));
     }
 }
 

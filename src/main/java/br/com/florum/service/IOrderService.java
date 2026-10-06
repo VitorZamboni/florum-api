@@ -9,5 +9,5 @@ import java.util.List;
 public interface IOrderService {
     Long save(CreateOrderDTO orderDTO, User user);
     List<Order> findAll(Long userId);
-    Order findById(Long id);
+    Order findById(Long id, Long userId);
 }

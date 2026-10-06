@@ -45,10 +45,10 @@ INSERT INTO public.addresses (cep,  "number", user_id, city, district, state, st
 INSERT INTO public.coupons (discount_amount, expires_on, code) VALUES(30, '2027-09-27 10:30:00-03', '1COMPRA');
 INSERT INTO public.coupons (discount_amount, expires_on, code) VALUES(36, '2026-09-27 10:30:00-03', 'COMPRA');
 
-INSERT INTO public.orders (address_id, coupon_id, purchased_on, user_id, payment_type, shipping, discount, total, status) VALUES(1, 1, '2027-09-28 12:30:00-03', 2, 'PIX', 20.00, 30.00, 888.97, 'PENDING');
+INSERT INTO public.orders (address_id, coupon_id, purchased_on, user_id, payment_type, shipping, discount, total, status) VALUES(1, 1, '2026-09-28 12:30:00-03', 2, 'PIX', 20.00, 30.00, 888.75, 'PENDING');
 
 INSERT INTO public.order_items (price, quantity, order_id, product_id) VALUES(199.99, 3, 1, 1);
-INSERT INTO public.order_items (price, quantity, order_id, product_id) VALUES(149.50, 2, 1, 1);
+INSERT INTO public.order_items (price, quantity, order_id, product_id) VALUES(149.39, 2, 1, 2);
 
 INSERT INTO public.carts (user_id) VALUES(2);
 
