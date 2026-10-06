@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "order_items")
 @NoArgsConstructor
@@ -20,7 +22,7 @@ public class OrderItem {
     private Integer quantity;
 
     @NotNull
-    private Double price;
+    private BigDecimal price;
 
     @NotNull
     @ManyToOne

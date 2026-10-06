@@ -13,7 +13,7 @@ public class SimpleProductDTO {
     private Long id;
     private String name;
     private BigDecimal price;
-    private Double discount;
+    private BigDecimal discount;
     private Double evaluation;
     private String mainImageUrl;
 }

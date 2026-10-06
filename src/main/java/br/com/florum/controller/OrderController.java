@@ -1,12 +1,16 @@
 package br.com.florum.controller;
 
+import br.com.florum.dto.order.CreateOrderDTO;
+import br.com.florum.dto.order.CreateOrderResponseDTO;
 import br.com.florum.dto.order.OrderDTO;
 import br.com.florum.mapper.OrderMapper;
 import br.com.florum.model.Order;
+import br.com.florum.model.User;
 import br.com.florum.service.IOrderService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -25,11 +29,12 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderDTO> saveOrder(@RequestBody @Valid OrderDTO order){
-        Order orderSaved = this.orderMapper.toEntity(order);
-        this.orderService.save(orderSaved);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.orderMapper.toDto(orderSaved));
+    @ResponseStatus(HttpStatus.CREATED)
+    public CreateOrderResponseDTO saveOrder(
+        @RequestBody @Valid CreateOrderDTO order,
+        @AuthenticationPrincipal User user
+    ) {
+        return new CreateOrderResponseDTO(orderService.save(order, user));
     }
 
     @GetMapping("user/{userId}")

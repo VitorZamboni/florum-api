@@ -4,12 +4,12 @@ import br.com.florum.model.Coupon;
 import br.com.florum.repository.CouponRepository;
 import br.com.florum.service.ICouponService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.Instant;
 
 @Service
 public class CouponServiceImpl implements ICouponService {
@@ -27,7 +27,7 @@ public class CouponServiceImpl implements ICouponService {
 
     @Override
     @Transactional(readOnly = true)
-    public int findByCodeDiscount(String code) {
+    public BigDecimal findByCodeDiscount(String code) {
         return findValidByCode(code).getDiscountAmount();
     }
 
@@ -38,7 +38,7 @@ public class CouponServiceImpl implements ICouponService {
             if(coupon == null){
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Coupon not found");
             }
-            if(coupon.getExpirationDate().before(new Date())){
+            if(coupon.getExpiresOn().isBefore(Instant.now())){
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Coupon expired");
             }
 

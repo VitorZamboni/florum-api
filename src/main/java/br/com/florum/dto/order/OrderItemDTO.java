@@ -4,6 +4,8 @@ import br.com.florum.dto.product.ProductDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -16,7 +18,7 @@ public class OrderItemDTO {
     private Integer quantity;
 
     @NotNull
-    private Double price;
+    private BigDecimal price;
 
     @NotNull
     private ProductDTO product;

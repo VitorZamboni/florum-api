@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.Instant;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class CouponDto {
     @NotNull
     private String code;
 
-    private int discountAmount;
+    private BigDecimal discountAmount;
 
-    private Date expirationDate;
+    private Instant expiresOn;
 }

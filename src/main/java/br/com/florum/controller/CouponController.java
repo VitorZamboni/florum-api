@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+
 @RestController
 @RequestMapping("coupons")
 public class CouponController {
@@ -22,7 +24,7 @@ public class CouponController {
     }
 
     @GetMapping("/discount/{code}")
-    public double findByCodeDiscount(@PathVariable String code){
+    public BigDecimal findByCodeDiscount(@PathVariable String code){
         return couponService.findByCodeDiscount(code);
     }
 
