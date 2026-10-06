@@ -4,9 +4,7 @@ import br.com.florum.model.Coupon;
 import br.com.florum.repository.CouponRepository;
 import br.com.florum.service.ICouponService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
@@ -20,19 +18,7 @@ public class CouponServiceImpl implements ICouponService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Coupon findByCodeCoupon(String code) {
-        return findValidByCode(code);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public int findByCodeDiscount(String code) {
-        return findValidByCode(code).getDiscountAmount();
-    }
-
-    @Override
-    public Coupon findValidByCode(String code) throws ResponseStatusException{
+    public Coupon findByCodeCoupon(String code) throws ResponseStatusException{
             Coupon coupon = this.couponRepository.findCouponByCode(code);
 
             if(coupon == null){

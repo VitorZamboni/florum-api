@@ -5,6 +5,7 @@ import br.com.florum.mapper.CouponMapper;
 import br.com.florum.service.ICouponService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +22,8 @@ public class CouponController {
         this.couponMapper = couponMapper;
     }
 
-    @GetMapping("/discount/{code}")
-    public double findByCodeDiscount(@PathVariable String code){
-        return couponService.findByCodeDiscount(code);
-    }
-
     @GetMapping("{code}")
+    @Transactional(readOnly = true)
     public ResponseEntity<CouponDto> findByCode(@PathVariable String code) {
         return ResponseEntity.status(HttpStatus.OK).body(couponMapper.toDto(this.couponService.findByCodeCoupon(code)));
     }
