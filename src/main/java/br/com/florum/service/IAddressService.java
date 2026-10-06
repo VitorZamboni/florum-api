@@ -8,10 +8,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface IAddressService {
-    Address findById(Long id);
     List<Address> findByUser(Long userId);
     AddressCepDTO findByCep(String cep);
     Address save(Address address, User user);
-    void delete(Long id);
+    void deactivates(Long id);
     BigDecimal calculateShipping(Address address);
 }

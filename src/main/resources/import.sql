@@ -40,7 +40,7 @@ INSERT INTO public.products_categories (category_id, product_id) VALUES(4, 2);
 -- Flores do Campo
 INSERT INTO public.products_categories (category_id, product_id) VALUES(3, 3);
 
-INSERT INTO public.addresses (cep,  "number", user_id, city, district, state, street, complement, country) VALUES('85513899',  '123', 2, 'Pato Branco', 'São Caetano', 'PR', 'Est Rio Dourado', 'Km 3', 'Brasil');
+INSERT INTO public.addresses (cep,  "number", user_id, city, district, state, street, complement, country, active) VALUES('85513899',  '123', 2, 'Pato Branco', 'São Caetano', 'PR', 'Est Rio Dourado', 'Km 3', 'Brasil', true);
 
 INSERT INTO public.coupons (discount_amount, expires_on, code) VALUES(30, '2027-09-27 10:30:00-03', '1COMPRA');
 INSERT INTO public.coupons (discount_amount, expires_on, code) VALUES(36, '2026-09-27 10:30:00-03', 'COMPRA');

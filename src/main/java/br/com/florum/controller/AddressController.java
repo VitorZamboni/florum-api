@@ -32,12 +32,6 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.OK).body(addressService.findByUser(user.getId()).stream().map(addressMapper::toDto).toList());
     }
 
-    @GetMapping("{id}")
-    @Transactional(readOnly = true)
-    public  ResponseEntity<Address> findById(@PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(addressService.findById(id));
-    }
-
     @GetMapping("cep/{cep}")
     @Transactional(readOnly = true)
     public ResponseEntity<AddressCepDTO> findByCep(@PathVariable String cep){
@@ -54,7 +48,7 @@ public class AddressController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
-        addressService.delete(id);
+        addressService.deactivates(id);
     }
 }
 

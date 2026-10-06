@@ -53,4 +53,7 @@ public class Address {
     private String country = "Brasil";
 
     private String complement;
+
+    @Builder.Default
+    private Boolean active = true;
 }

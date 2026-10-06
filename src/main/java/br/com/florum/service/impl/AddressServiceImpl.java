@@ -26,20 +26,8 @@ public class AddressServiceImpl implements IAddressService {
 
     @Override
     @Transactional(readOnly = true)
-    public Address findById(Long id) {
-        Address address = this.addressRepository.findById(id).orElse(null);
-
-        if(address == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Address not found");
-        }
-
-        return address;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<Address> findByUser(Long userId) {
-        return this.addressRepository.findByUserId(userId);
+        return this.addressRepository.findAddressByUserIdAndActiveIsTrue(userId);
     }
 
     @Override
@@ -66,8 +54,14 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public void delete(Long id){
-       this.addressRepository.deleteById(id);
+    public void deactivates(Long id){
+       Address addressDeactivated = addressRepository.findAddressById((id));
+
+       if(addressDeactivated == null){
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Address not found");
+       }
+
+       addressDeactivated.setActive(false);
     }
 
     @Override
