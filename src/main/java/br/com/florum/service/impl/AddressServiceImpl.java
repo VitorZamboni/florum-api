@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -67,5 +68,10 @@ public class AddressServiceImpl implements IAddressService {
     @Override
     public void delete(Long id){
        this.addressRepository.deleteById(id);
+    }
+
+    @Override
+    public BigDecimal calculateShipping(Address address) {
+        return new BigDecimal("20.00");
     }
 }

@@ -7,7 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.Instant;
 
 @Entity
 @Table (name = "coupons")
@@ -24,9 +25,9 @@ public class Coupon {
 
     @NotNull
     @Column(name = "discount_amount")
-    private int discountAmount;
+    private BigDecimal discountAmount;
 
     @NotNull
-    @Column(name = "expiration_date")
-    private Date expirationDate;
+    @Column(name = "expires_on")
+    private Instant expiresOn;
 }

@@ -7,7 +7,5 @@ import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = {ProductMapper.class})
 public interface OrderItemMapper {
-    OrderItem toEntity(OrderItemDTO dto);
-
     OrderItemDTO toDto(OrderItem entity);
 }

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 @Entity
@@ -30,8 +30,12 @@ public class Product {
     @NotNull
     private BigDecimal price;
 
-    private Double discount;
+    @Column(precision = 5, scale = 4)
+    @Builder.Default
+    @NotNull
+    private BigDecimal discount = BigDecimal.ZERO;
 
+    @NotNull
     private Integer stock;
 
     private Integer views;
@@ -39,7 +43,7 @@ public class Product {
     private Double evaluation;
 
     @Column(name = "created_on")
-    private Date createdOn;
+    private Instant createdOn;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ProductCategory> productCategories;

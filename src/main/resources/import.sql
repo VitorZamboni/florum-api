@@ -7,9 +7,9 @@ insert into categories (name) values ('Rosas');
 INSERT INTO users(name, email, password) VALUES ('Administrador', 'admin@admin.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
 INSERT INTO users(name, email, password) VALUES ('Teste', 'test@gmail.com','$2a$10$5Em3OojvftsFJcpaX7QIWuyhZseZHDRz.jWpQ8LCTHzekypJE1Bgm');
 
-INSERT INTO products (discount, evaluation, price, stock, "views", created_on, description, "name") VALUES(0, 4.5, 199.99, 10, 1432, '2026-09-27 10:30:00', 'Um lindo buque de rosas', 'Buque de Rosas');
-INSERT INTO products (discount, evaluation, price, stock, "views", created_on, description, "name") VALUES(0.1, 4.9, 165.99, 58, 5671, '2026-09-26 11:30:00', 'Um Belo vaso de orquideas', 'Vaso de Orquideas');
-INSERT INTO products (discount, evaluation, price, stock, "views", created_on, description, "name") VALUES(0, 4, 65.99, 43, 8523, '2026-09-27 11:50:00', 'Um delicado arranjo de flores do campo', 'Arranjo de Flores do Campo');
+INSERT INTO products (discount, evaluation, price, stock, "views", created_on, description, "name") VALUES(0, 4.5, 199.99, 10, 1432, '2026-09-27 10:30:00-03', 'Um lindo buque de rosas', 'Buque de Rosas');
+INSERT INTO products (discount, evaluation, price, stock, "views", created_on, description, "name") VALUES(0.1, 4.9, 165.99, 58, 5671, '2026-09-26 11:30:00-03', 'Um Belo vaso de orquideas', 'Vaso de Orquideas');
+INSERT INTO products (discount, evaluation, price, stock, "views", created_on, description, "name") VALUES(0, 4, 65.99, 43, 8523, '2026-09-27 11:50:00-03', 'Um delicado arranjo de flores do campo', 'Arranjo de Flores do Campo');
 
 -- Imagens do buque de rosas
 INSERT INTO product_images (sort_index,  product_id, url) VALUES(1, 1, 'https://images.pexels.com/photos/30190562/pexels-photo-30190562.jpeg');
@@ -42,13 +42,13 @@ INSERT INTO public.products_categories (category_id, product_id) VALUES(3, 3);
 
 INSERT INTO public.addresses (cep,  "number", user_id, city, district, state, street, complement, country) VALUES('85513899',  '123', 2, 'Pato Branco', 'São Caetano', 'PR', 'Est Rio Dourado', 'Km 3', 'Brasil');
 
-INSERT INTO public.coupons (discount_amount, expiration_date, code) VALUES(30, '2027-09-27 10:30:00', '1COMPRA');
-INSERT INTO public.coupons (discount_amount, expiration_date, code) VALUES(36, '2026-09-27 10:30:00', 'COMPRA');
+INSERT INTO public.coupons (discount_amount, expires_on, code) VALUES(30, '2027-09-27 10:30:00-03', '1COMPRA');
+INSERT INTO public.coupons (discount_amount, expires_on, code) VALUES(36, '2026-09-27 10:30:00-03', 'COMPRA');
 
-INSERT INTO public.orders (address_id, coupon_id, data_purchase, user_id, payment_type) VALUES(1, 1, '2027-09-28 12:30:00', 2, 'PIX');
+INSERT INTO public.orders (address_id, coupon_id, purchased_on, user_id, payment_type, shipping, discount, total, status) VALUES(1, 1, '2026-09-28 12:30:00-03', 2, 'PIX', 20.00, 30.00, 888.75, 'PENDING');
 
 INSERT INTO public.order_items (price, quantity, order_id, product_id) VALUES(199.99, 3, 1, 1);
-INSERT INTO public.order_items (price, quantity, order_id, product_id) VALUES(149.50, 2, 1, 1);
+INSERT INTO public.order_items (price, quantity, order_id, product_id) VALUES(149.39, 2, 1, 2);
 
 INSERT INTO public.carts (user_id) VALUES(2);
 

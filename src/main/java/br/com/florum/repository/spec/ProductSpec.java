@@ -8,6 +8,7 @@ import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class ProductSpec {
             }
 
             if (Boolean.TRUE.equals(filter.getPromotion())) {
-                predicates.add(builder.gt(root.get("discount"), 0.0));
+                predicates.add(builder.gt(root.get("discount"), BigDecimal.ZERO));
             }
 
             if (filter.getCategoryIds() != null && !filter.getCategoryIds().isEmpty()) {

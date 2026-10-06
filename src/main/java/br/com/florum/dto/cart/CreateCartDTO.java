@@ -1,5 +1,6 @@
 package br.com.florum.dto.cart;
 
+import br.com.florum.dto.product.ProductQuantityDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -16,5 +17,5 @@ import java.util.List;
 public class CreateCartDTO {
     @Valid
     @NotEmpty
-    private List<CreateCartItemDTO> items;
+    private List<ProductQuantityDTO> items;
 }

@@ -4,7 +4,7 @@ import br.com.florum.dto.categories.CategoryDTO;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 @Getter
@@ -21,7 +21,7 @@ public class ProductDTO {
 
     private BigDecimal price;
 
-    private Double discount;
+    private BigDecimal discount;
 
     private Integer stock;
 
@@ -29,7 +29,7 @@ public class ProductDTO {
 
     private Double evaluation;
 
-    private Date createdOn;
+    private Instant createdOn;
 
     private List<CategoryDTO> categories;
 

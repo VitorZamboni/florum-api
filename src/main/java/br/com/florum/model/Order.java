@@ -1,11 +1,14 @@
 package br.com.florum.model;
 
+import br.com.florum.enuns.OrderStatusEnum;
 import br.com.florum.enuns.PaymentTypeEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,10 +41,24 @@ public class Order {
     @Column(name = "payment_type")
     private PaymentTypeEnum paymentTypeEnum;
 
-    @Column(name = "data_purchase")
-    private Date datePurchase = new Date();
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private OrderStatusEnum status;
+
+    @Column(name = "purchased_on")
+    @Builder.Default
+    private Instant purchasedOn = Instant.now();
+
+    @NotNull
+    private BigDecimal shipping;
+
+    private BigDecimal discount;
+
+    @NotNull
+    private BigDecimal total;
 
     @NotNull
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderItem> orderItems;
+    @Builder.Default
+    private List<OrderItem> orderItems = new ArrayList<>();
 }

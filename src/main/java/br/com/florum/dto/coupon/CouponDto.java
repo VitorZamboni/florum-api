@@ -5,11 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class CouponDto {
-    private String code;
-    private int discountAmount;
+    private BigDecimal discountAmount;
 }
