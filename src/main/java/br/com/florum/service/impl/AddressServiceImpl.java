@@ -1,6 +1,7 @@
 package br.com.florum.service.impl;
 
 import br.com.florum.dto.address.AddressCepDTO;
+import br.com.florum.dto.address.AddressShippingDTO;
 import br.com.florum.model.Address;
 import br.com.florum.model.User;
 import br.com.florum.repository.AddressRepository;
@@ -12,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Service
@@ -66,6 +68,43 @@ public class AddressServiceImpl implements IAddressService {
 
     @Override
     public BigDecimal calculateShipping(Address address) {
-        return new BigDecimal("20.00");
+        String cep = address.getCep();
+
+        AddressShippingDTO dto = restTemplate.getForObject("https://cep.awesomeapi.com.br/json/{cep}", AddressShippingDTO.class, cep);
+
+        if(dto == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "CEP not found");
+        }
+
+        double lngStore = -52.676112;
+        double latStore = -26.2109254;
+
+        double lngOrder = Double.parseDouble(dto.getLng());
+        double latOrder = Double.parseDouble(dto.getLat());
+
+        double dLat = Math.toRadians((latOrder - latStore));
+        double dLng = Math.toRadians((lngOrder - lngStore));
+
+        latOrder = Math.toRadians(latOrder);
+        latStore = Math.toRadians(latStore);
+
+        double a = Math.pow(Math.sin(dLat/2), 2) + Math.cos(latStore) * Math.cos(latOrder) * Math.pow(Math.sin(dLng /2), 2) ;
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        double distance = 6371 * c;
+
+        double price;
+
+        if(distance <= 15){
+            price = 20;
+        }else if(distance <= 35){
+            price = 40;
+        }else if(distance <= 80){
+            price = 56;
+        }else {
+            price = 100 + (distance * 0.05);
+        }
+
+        return BigDecimal.valueOf(price).setScale(2, RoundingMode.HALF_UP);
     }
 }
