@@ -50,6 +50,7 @@ public class Address {
     private String state;
 
     @NotNull
+    @Builder.Default
     private String country = "Brasil";
 
     private String complement;
