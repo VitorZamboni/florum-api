@@ -72,7 +72,7 @@ public class OrderServiceImpl implements IOrderService {
         Coupon coupon = null;
         if (orderDTO.getCouponCode() != null && !orderDTO.getCouponCode().isBlank()) {
             coupon = couponService
-                .findValidByCode(orderDTO.getCouponCode());
+                .findByCodeCoupon(orderDTO.getCouponCode());
         }
 
         Order order = Order.builder()
