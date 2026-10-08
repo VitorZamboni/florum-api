@@ -46,7 +46,7 @@ public class Address {
     private String city;
 
     @NotNull
-    @Size(min = 3, max = 70)
+    @Size(min = 2, max = 70)
     private String state;
 
     @NotNull

@@ -57,7 +57,7 @@ public class AddressServiceImpl implements IAddressService {
         address.setUser(user);
         address.setActive(true);
         address.setLng(dto.getLng());
-        address.setLng(dto.getLat());
+        address.setLat(dto.getLat());
 
         return this.addressRepository.save(address);
     }
