@@ -41,16 +41,23 @@ public class AddressServiceImpl implements IAddressService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "CEP not found");
         }
 
+        dto.setCountry("Brasil");
+
         return dto;
     }
 
     @Override
     public Address save(Address address, User user) {
-        address.setUser(user);
+        AddressShippingDTO dto = restTemplate.getForObject("https://cep.awesomeapi.com.br/json/{cep}", AddressShippingDTO.class, address.getCep());
 
-        if(address.getCountry() == null){
-            address.setCountry("Brasil");
+        if(dto == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cep not found");
         }
+
+        address.setUser(user);
+        address.setActive(true);
+        address.setLng(dto.getLng());
+        address.setLng(dto.getLat());
 
         return this.addressRepository.save(address);
     }
@@ -68,19 +75,11 @@ public class AddressServiceImpl implements IAddressService {
 
     @Override
     public BigDecimal calculateShipping(Address address) {
-        String cep = address.getCep();
-
-        AddressShippingDTO dto = restTemplate.getForObject("https://cep.awesomeapi.com.br/json/{cep}", AddressShippingDTO.class, cep);
-
-        if(dto == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "CEP not found");
-        }
-
         double lngStore = -52.676112;
         double latStore = -26.2109254;
 
-        double lngOrder = Double.parseDouble(dto.getLng());
-        double latOrder = Double.parseDouble(dto.getLat());
+        double lngOrder = Double.parseDouble(address.getLng());
+        double latOrder = Double.parseDouble(address.getLat());
 
         double dLat = Math.toRadians((latOrder - latStore));
         double dLng = Math.toRadians((lngOrder - lngStore));

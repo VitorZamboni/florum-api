@@ -50,11 +50,15 @@ public class Address {
     private String state;
 
     @NotNull
-    @Builder.Default
-    private String country = "Brasil";
+    private String country;
 
     private String complement;
 
-    @Builder.Default
-    private Boolean active = true;
+    @NotNull
+    private String lat;
+
+    @NotNull
+    private String lng;
+
+    private Boolean active;
 }

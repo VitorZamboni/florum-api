@@ -26,8 +26,8 @@ public class AddressCepDTO {
     @NotNull
     private String state;
 
-    @Builder.Default
-    private String country = "Brasil";
+    @NotNull
+    private String country;
 }
 
 
