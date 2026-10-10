@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -48,9 +47,6 @@ public class OrderController {
     public ResponseEntity<OrderDTO> findById(@PathVariable Long id, @AuthenticationPrincipal User user){
         Order order = this.orderService.findById(id, user.getId());
 
-        if (order == null){
-            return ResponseEntity.noContent().build();
-        }
         return ResponseEntity.status(HttpStatus.OK).body(orderMapper.toDto(order));
     }
 }

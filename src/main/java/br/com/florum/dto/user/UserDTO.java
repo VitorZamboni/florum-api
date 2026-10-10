@@ -19,12 +19,12 @@ public class UserDTO {
     @Size(min = 4, max = 50)
     private String email;
 
-    @NotNull(message = "O campo 'name' não pode ser null")
+    @NotNull(message = "Name must not be null")
     @Size(min = 4, max = 50)
     private String name;
 
     @NotNull
     @Size(min = 6)
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "Password must contain at least 6 characters, including one uppercase letter, one lowercase letter, and one number")
     private String password;
 }

@@ -2,6 +2,7 @@ package br.com.florum.dto.address;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -13,7 +14,8 @@ public class AddressDTO {
     private Long id;
 
     @NotNull
-    @Size(min = 8, max = 8)
+    @Size(min = 8, max = 8, message = "Cep must contain exactly 8 digits")
+    @Pattern(regexp = "^\\d+$", message = "Cep must contain only digits")
     private String cep;
 
     @NotNull
