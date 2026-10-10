@@ -1,15 +1,17 @@
 package br.com.florum.error;
 
+import br.com.florum.error.exceptions.BadRequestException;
+import br.com.florum.error.exceptions.ConflictException;
+import br.com.florum.error.exceptions.NotFoundException;
+import br.com.florum.error.exceptions.UnprocessableException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,17 +38,56 @@ public class ExceptionHandlerAdvice {
         );
     }
 
-    @ExceptionHandler(value = {ResponseStatusException.class})
-    public ResponseEntity<ApiError> handleResponseStatusException(
-            ResponseStatusException exception,
-            HttpServletRequest request
+    @ExceptionHandler(value = {BadRequestException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handleBadRequestException(
+        BadRequestException exception,
+        HttpServletRequest request
     ) {
-        return ResponseEntity
-            .status(exception.getStatusCode())
-            .body( new ApiError(
-                exception.getStatusCode().value(),
-                exception.getReason(),
-                request.getServletPath()
-            ));
+        return new ApiError(
+            HttpStatus.BAD_REQUEST.value(),
+            exception.getMessage(),
+            request.getServletPath()
+        );
+    }
+
+    @ExceptionHandler(value = {NotFoundException.class})
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleNotFoundException(
+        NotFoundException exception,
+        HttpServletRequest request
+    ) {
+        return new ApiError(
+            HttpStatus.NOT_FOUND.value(),
+            exception.getMessage(),
+            request.getServletPath()
+        );
+    }
+
+    @ExceptionHandler(value = {ConflictException.class})
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ApiError handleConflictExceptionException(
+        ConflictException exception,
+        HttpServletRequest request
+    ) {
+        return new ApiError(
+            HttpStatus.CONFLICT.value(),
+            exception.getMessage(),
+            request.getServletPath()
+        );
+    }
+
+
+    @ExceptionHandler(value = {UnprocessableException.class})
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_CONTENT)
+    public ApiError handleUnprocessableExceptionException(
+        UnprocessableException exception,
+        HttpServletRequest request
+    ) {
+        return new ApiError(
+            HttpStatus.UNPROCESSABLE_CONTENT.value(),
+            exception.getMessage(),
+            request.getServletPath()
+        );
     }
 }
