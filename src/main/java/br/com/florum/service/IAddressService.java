@@ -11,6 +11,6 @@ public interface IAddressService {
     List<Address> findByUser(Long userId);
     AddressCepDTO findByCep(String cep);
     Address save(Address address, User user);
-    void deactivates(Long id);
+    void deactivates(Long id, long userId);
     BigDecimal calculateShipping(Address address);
 }
