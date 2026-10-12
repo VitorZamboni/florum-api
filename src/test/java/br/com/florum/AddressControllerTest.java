@@ -22,7 +22,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @AutoConfigureTestRestTemplate
-@Sql(scripts = {"/seeds/import_user.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
+@Sql(scripts = {"/seeds/cleanup.sql", "/seeds/import_user.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
 public class AddressControllerTest {
     private static final String API_ADDRESS = "/addresses";
 
@@ -84,12 +84,13 @@ public class AddressControllerTest {
 
         return Address.builder()
                 .user(user)
-                .cep("88888888")
+                .cep("85506180")
                 .street("Avenida")
                 .number("12")
                 .district("centro")
                 .city("pato branco")
                 .state("parana")
+                .country("Brasil")
                 .build();
     }
 }
