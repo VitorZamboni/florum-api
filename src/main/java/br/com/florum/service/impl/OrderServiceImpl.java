@@ -53,7 +53,7 @@ public class OrderServiceImpl implements IOrderService {
         Map<Long, Integer> quantityByProduct = ProductQuantityDTO.sumByProduct(orderDTO.getItems());
         Map<Long, Product> productsById = productService.findAllByIdsOrThrow(quantityByProduct.keySet());
 
-        Address address = addressRepository.findAddressByIdAndUserId(orderDTO.getAddressId(), user.getId());
+        Address address = addressRepository.findAddressByIdAndUserIdAndActiveIsTrue(orderDTO.getAddressId(), user.getId());
         if (address == null) {
             throw new NotFoundException("Address not found with id: " + orderDTO.getAddressId());
         }

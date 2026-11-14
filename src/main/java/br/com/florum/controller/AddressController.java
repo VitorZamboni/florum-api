@@ -47,8 +47,8 @@ public class AddressController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id){
-        addressService.deactivates(id);
+    public void delete(@PathVariable Long id, @AuthenticationPrincipal User user){
+        addressService.deactivates(id, user.getId());
     }
 }
 

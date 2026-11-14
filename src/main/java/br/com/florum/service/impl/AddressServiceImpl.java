@@ -81,8 +81,8 @@ public class AddressServiceImpl implements IAddressService {
 
     @Override
     @Transactional
-    public void deactivates(Long id){
-       Address addressDeactivated = addressRepository.findAddressById((id));
+    public void deactivates(Long id, long userId){
+       Address addressDeactivated = addressRepository.findAddressByIdAndUserIdAndActiveIsTrue(id, userId);
 
        if(addressDeactivated == null){
            throw new NotFoundException("Address not found");
