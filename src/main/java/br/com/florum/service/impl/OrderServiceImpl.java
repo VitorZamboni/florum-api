@@ -74,7 +74,6 @@ public class OrderServiceImpl implements IOrderService {
         Order order = Order.builder()
             .user(user)
             .address(address)
-            .shipping(addressService.calculateShipping(address))
             .paymentTypeEnum(orderDTO.getPaymentType())
             .status(OrderStatusEnum.PENDING)
             .coupon(coupon)
@@ -102,6 +101,7 @@ public class OrderServiceImpl implements IOrderService {
         }
 
         order.getOrderItems().addAll(items);
+        order.setShipping(addressService.calculateShipping(address, subtotal));
         BigDecimal discount = coupon != null ? coupon.getDiscountAmount() : BigDecimal.ZERO;
         order.setDiscount(discount);
         order.setTotal(subtotal.add(order.getShipping()).subtract(discount));

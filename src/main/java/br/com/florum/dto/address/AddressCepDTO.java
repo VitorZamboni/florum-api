@@ -1,6 +1,6 @@
 package br.com.florum.dto.address;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -14,7 +14,7 @@ public class AddressCepDTO {
     private String cep;
 
     @NotNull
-    @JsonProperty("address")
+    @JsonAlias("address")
     private String street;
 
     @NotNull

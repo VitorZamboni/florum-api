@@ -19,6 +19,8 @@ import java.util.List;
 
 @Service
 public class AddressServiceImpl implements IAddressService {
+    private static final BigDecimal FREE_SHIPPING_THRESHOLD = new BigDecimal("499.99");
+
     private final AddressRepository addressRepository;
     private final RestTemplate restTemplate;
 
@@ -92,7 +94,23 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public BigDecimal calculateShipping(Address address) {
+    @Transactional(readOnly = true)
+    public BigDecimal calculateShipping(Long addressId, BigDecimal subtotal, Long userId) {
+        Address address = addressRepository.findAddressByIdAndUserIdAndActiveIsTrue(addressId, userId);
+
+        if (address == null) {
+            throw new NotFoundException("Address not found");
+        }
+
+        return calculateShipping(address, subtotal);
+    }
+
+    @Override
+    public BigDecimal calculateShipping(Address address, BigDecimal subtotal) {
+        if (subtotal.compareTo(FREE_SHIPPING_THRESHOLD) > 0) {
+            return BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
+        }
+
         double lngStore = -52.676112;
         double latStore = -26.2109254;
 

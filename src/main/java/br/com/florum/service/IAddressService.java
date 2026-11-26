@@ -12,5 +12,6 @@ public interface IAddressService {
     AddressCepDTO findByCep(String cep);
     Address save(Address address, User user);
     void deactivates(Long id, long userId);
-    BigDecimal calculateShipping(Address address);
+    BigDecimal calculateShipping(Address address, BigDecimal subtotal);
+    BigDecimal calculateShipping(Long addressId, BigDecimal subtotal, Long userId);
 }

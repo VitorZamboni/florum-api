@@ -2,6 +2,7 @@ package br.com.florum.controller;
 
 import br.com.florum.dto.address.AddressCepDTO;
 import br.com.florum.dto.address.AddressDTO;
+import br.com.florum.dto.address.ShippingDTO;
 import br.com.florum.mapper.AddressMapper;
 import br.com.florum.model.Address;
 import br.com.florum.model.User;
@@ -13,6 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -36,6 +38,11 @@ public class AddressController {
     @Transactional(readOnly = true)
     public ResponseEntity<AddressCepDTO> findByCep(@PathVariable String cep){
         return ResponseEntity.status(HttpStatus.OK).body(addressService.findByCep(cep));
+    }
+
+    @GetMapping("{id}/shipping")
+    public ResponseEntity<ShippingDTO> calculateShipping(@PathVariable Long id, @RequestParam BigDecimal subtotal, @AuthenticationPrincipal User user){
+        return ResponseEntity.ok(new ShippingDTO(addressService.calculateShipping(id, subtotal, user.getId())));
     }
 
     @PostMapping
